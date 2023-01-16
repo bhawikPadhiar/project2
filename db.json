@@ -1,47 +1,29 @@
 {
   "task": [
     {
-      "id": 1,
-      "taskname": "json-server",
-      "status": "",
-      "priority": "high",
-      "toggle": ""
-    },
-    {
-      "taskname": "ravi",
-      "priority": "High",
-      "id": 3,
-      "bought": true
-    },
-    {
-      "taskname": "Medium",
-      "id": 5,
-      "bought": true
-    },
-    {
-      "taskname": "jayachand",
+      "taskname": "jaya",
       "priority": "Medium",
-      "id": 7,
-      "bought": true
+      "id": 7
     },
     {
-      "taskname": "adsas",
+      "taskname": "harsh",
       "priority": "Medium",
-      "id": 8,
-      "bought": true
+      "id": 8
     },
     {
-      "taskname": "damn",
-      "priority": "Medium",
+      "taskname": "raviii",
+      "priority": "Low",
       "id": 9
     },
     {
-      "id": 10
+      "taskname": "ololol",
+      "priority": "Low",
+      "id": 11
     },
     {
-      "taskname": "dsd",
+      "taskname": "harsh",
       "priority": "Medium",
-      "id": 11
+      "id": 12
     }
   ]
 }

@@ -29,9 +29,10 @@
                     </td>
                     <td class="align-middle">
                         <div>
-                            <input type="checkbox" v-on:click="boughtItem(task.id)" class="{bought: task.taskname}" v-model="task.toggle" true-value="done" false-value="undone" />
+                           <input type="checkbox"  v-model="task.toggle" true-value="done" false-value="undone" />
                            <label for="checkbox"> {{ task.toggle }}</label>
-                            
+                           
+
                           </div>
                       <h6 class="mb-0"><span class="badge bg-danger"></span></h6>
                     </td>
@@ -68,7 +69,9 @@ export default{
     data() {
         return {
             tasks: [],
-            task:[]
+            task:[],
+            checked:false,
+            status:""
         };
     },
     async created() {
@@ -89,6 +92,13 @@ export default{
    
 
     },
+    // status(){
+    //   if(checked){
+    //     return this.task.toggle="done"
+    //   }
+    //   else
+    //   return this.task.toggle="undone"
+    // }
     // created() {
     //     this.$http.get("http://localhost:3000/task").then(function (data) {
     //         console.log(data);
