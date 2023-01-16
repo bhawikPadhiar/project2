@@ -29,7 +29,7 @@
                     </td>
                     <td class="align-middle">
                         <div>
-                            <input type="checkbox"  v-model="task.toggle" true-value="done" false-value="undone" />
+                            <input type="checkbox" v-on:click="boughtItem(task.id)" class="{bought: task.taskname}" v-model="task.toggle" true-value="done" false-value="undone" />
                            <label for="checkbox"> {{ task.toggle }}</label>
                             
                           </div>
@@ -37,12 +37,11 @@
                     </td>
                     <td class="align-middle">
                         <!-- <button>edit</button> -->
-                        <router-link to="/edit" tag="button" class="btn btn-warning rounded-2">edit</router-link>
+                        <router-link v-bind:to="'/edit/'+task.id" tag="button" class="btn btn-warning rounded-2">edit</router-link>
                         <button v-on:click="removeItem(task.id)">delete</button>
                         
                         <!-- <font-awesome-icon icon="fa-solid fa-trash" /> -->
-                      <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                          class="fas fa-trash-alt text-danger"></i></a>
+                      
                           
                     </td>
                     
@@ -87,7 +86,7 @@ export default{
       this.tasks = this.tasks.filter((task) => task.id !== id);
       console.log(id);
     },
-
+   
 
     },
     // created() {
@@ -102,6 +101,9 @@ export default{
 <style>
 #checkboxes input{
 display:inline-block;
-
 }
+.bought {
+  text-decoration: line-through;
+}
+
 </style>

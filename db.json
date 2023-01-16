@@ -10,26 +10,25 @@
     {
       "taskname": "ravi",
       "priority": "High",
-      "id": 3
+      "id": 3,
+      "bought": true
     },
     {
       "taskname": "Medium",
-      "id": 5
-    },
-    {
-      "taskname": "dfh",
-      "priority": "Low",
-      "id": 6
+      "id": 5,
+      "bought": true
     },
     {
       "taskname": "jayachand",
       "priority": "Medium",
-      "id": 7
+      "id": 7,
+      "bought": true
     },
     {
       "taskname": "adsas",
       "priority": "Medium",
-      "id": 8
+      "id": 8,
+      "bought": true
     },
     {
       "taskname": "damn",

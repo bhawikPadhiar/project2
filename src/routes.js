@@ -5,6 +5,6 @@ export default[
 
     { path:'/', component:Hometask },
     { path:'/Add', component:Addtask },
-    { path:'/edit', component:TaskEdit }
+    { path:'/edit/:id', component:TaskEdit }
     
   ]
