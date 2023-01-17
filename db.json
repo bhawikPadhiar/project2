@@ -3,19 +3,19 @@
     {
       "taskname": "jayachuna",
       "priority": "High",
-      "checked": "undone",
+      "checked": false,
       "id": 16
     },
     {
       "taskname": "ravi ",
       "priority": "Medium",
-      "checked": "undone",
+      "checked": true,
       "id": 17
     },
     {
       "taskname": "homework",
       "priority": "Low",
-      "checked": "undone",
+      "checked": true,
       "id": 18
     }
   ]

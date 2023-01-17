@@ -21,7 +21,7 @@
         <tbody>
           <tr v-for="task in tasks" v-bind:key="task.id" class="fw-normal">
             <th>
-              <span v-bind:class="{ isclicked: true }">{{ task.taskname }}</span>
+              <span v-bind:class="task.checked ? 'isclicked' : ''">{{ task.taskname }}</span>
             </th>
             <td class="align-middle">
               <span>{{ task.priority }}</span>
@@ -31,9 +31,9 @@
               <div>
                 <!-- <input type="checkbox"    />
                            <label for="checkbox">{{ task.status}}</label> -->
-                <input type="checkbox" true-value="done" false-value="undone" v-model="task.checked"
-                  v-on:click="checkTask(task.taskname, task.priority, task.checked, task.id)" />
-                <label for="checkbox">{{ task.checked }}</label>
+                <input type="checkbox"  v-model="task.checked"
+                  v-on:click="checkTask(task)" />
+                <label for="checkbox">{{ task.checked ? 'done' : 'undone' }}</label>
 
 
               </div>
@@ -74,7 +74,7 @@ export default {
     return {
       tasks: [],
       task: [],
-
+      // isclicked:false
 
     };
   },
@@ -94,30 +94,30 @@ export default {
       console.log(id);
     },
 
-    checkTask: function (taskname, priority, checked, id) {
-      if (checked == "undone") {
-        axios.put('http://localhost:3000/task/' + id,
+    checkTask: function (task) {
+      if (task.checked == false) {
+        axios.put('http://localhost:3000/task/' + task.id,
           {
-            taskname: taskname,
-            priority: priority,
-            checked: "done",
-            id: id,
+            taskname: task.taskname,
+            priority: task.priority,
+            checked: true,
+            id: task.id,
 
           }).then(function () {
-           // this.done = true
+            // this.isclicked = true
             //this.cut.push('cut')
           });
       }
       else {
-        axios.put('http://localhost:3000/task/' + id,
+        axios.put('http://localhost:3000/task/' + task.id,
           {
-            taskname: taskname,
-            priority: priority,
-            checked: "undone",
-            id: id,
+            taskname: task.taskname,
+            priority: task.priority,
+            checked: false,
+            id: task.id,
 
           }).then(function () {
-            this.done = false
+            // this.isclicked = false
             //this.cut.push('cut')
           });
 
