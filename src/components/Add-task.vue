@@ -37,6 +37,8 @@ export default{
       const res = await axios.post(`http://localhost:3000/task`, {
         taskname: this.task.taskname,
         priority: this.task.priority,
+        checked: "undone",
+        done:false
       });
       this.task = [this.task, res.data];
       this.taskname = "",
