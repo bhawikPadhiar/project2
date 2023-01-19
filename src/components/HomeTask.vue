@@ -1,9 +1,11 @@
 <template>
+  
   <div>
     <header>
       <h1><i class="fas fa-tasks me-2"></i>TO DO LIST</h1>
       <hr>
     </header>
+    
     <!-- <button class="btn btn-danger" v-on:click="">ADD TASK</button>
 <router-link></router-link> -->
     <router-link to="/Add" tag="button" class="btn btn-primary">Add Task</router-link>
@@ -66,16 +68,16 @@ import axios from 'axios'
 
 export default {
   // props: {
-  //     task: {
+  //     msg: {
   //         type: Array
   //     }
   // },
   data() {
     return {
       tasks: [],
-      task: [],
+     task: [],
       // isclicked:false
-
+     
     };
   },
   async created() {

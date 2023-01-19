@@ -3,9 +3,11 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import VueResource from 'vue-resource'
 import Routes from './routes'
+export const bus = new Vue();
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 Vue.config.productionTip = false
+
 
 
 Vue.use(VueResource);

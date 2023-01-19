@@ -1,6 +1,6 @@
-import Hometask from './components/Home-task';
-import Addtask from './components/Add-task';
-import TaskEdit from './components/Task-Edit';
+import Hometask from './components/HomeTask';
+import Addtask from './components/AddTask';
+import TaskEdit from './components/TaskEdit';
 export default[
 
     { path:'/', component:Hometask },
