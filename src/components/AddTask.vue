@@ -43,9 +43,7 @@ export default {
       this.taskname = "",
         this.priority = ""
          },
-    changeMessage(event){
-      this.message = event.target.value;
-      this.$emit('messageChanged',this.message)
+   
      
     }
     
@@ -60,5 +58,5 @@ export default {
     // }
   }
 
-}
+
 </script>

@@ -3,8 +3,10 @@
     
     <!-- <home-page v-bind:task="task"></home-page> -->
     <!-- <home-page v-bind:msg="task"></home-page> -->
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
 <SignUp></SignUp>
+<LoginPage></LoginPage>
+
     <!-- <add-task v-bind:msg="task" @messageChanged="message = $event"></add-task> -->
     <!-- <task-edit v-bind:task="task"></task-edit> -->
     <!-- <Addtask v-bind:task="task"></Addtask> -->
@@ -14,6 +16,8 @@
 
 <script>
 import SignUp from './components/SignUp.vue';
+import LoginPage from './components/LoginPage.vue';
+
 // import Homepage from './components/HomeTask.vue'
 // import Addtask from './components/AddTask.vue';
 //import TaskEdit from './components/Task-Edit.vue';
@@ -25,7 +29,9 @@ export default {
   //     }
   // },
   components: {
-    SignUp
+    SignUp,
+    LoginPage,
+
     // 'home-page':Homepage,
     // 'add-task':Addtask,
    // 'task-edit':TaskEdit
