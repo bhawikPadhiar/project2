@@ -38,16 +38,41 @@
   },
     methods:{
        
-     checkUser(password,hash) {
+    async checkUser(password) {
     //... fetch user from a db etc.
- //   axios.get(`http://localhost:3000/task/`)
-   // bcrypt.compare(password,hash, (err, res) => {
-   const match = bcrypt.compareSync(password, hash);
-  if (match) {
-    console.warn("succes")
-    return
-  }
-  console.log("lost") //true or false
+   const res = axios.get(`http://localhost:3000/task/`)
+   this.task = res.data;
+    //hash=this.task.hash
+   const match = await bcrypt.compare(password,this.task.hash);
+   console.warn
+   //if (bcrypt.compareSync(password,hash)) {
+        // authentication failed
+    //     return false;
+    // } else {
+    //     // authentication successful
+    //     return true;
+    // }
+    // async function checkUser(password) {
+    //... fetch user from a db etc.
+
+   // const match = await bcrypt.compare(password, user.passwordHash);
+
+    if(match) {
+        //login
+    }
+
+    //...
+}
+  // bcrypt.compare(password,hash => {
+   // const match =  bcrypt.compare(this.password,this.task.hash);
+  // const verified = bcrypt.compareSync('password', this.task.hash);
+   //const match = bcrypt.compareSync(password,hash);
+   //console.warn(verified);
+  // if (verified) {
+  //   console.warn("succes")
+  //   return
+  // }
+  // console.log("lost") //true or false
 }
 //     const match = await bcrypt.compare(this.password,this.task.hash);
    
@@ -65,7 +90,7 @@
     
     }
 
-    }
+  
     
-    
+
 </script>

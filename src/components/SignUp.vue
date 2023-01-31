@@ -64,15 +64,15 @@ export default{
        {
         let users = await axios.post('http://localhost:3000/task/',{ 
          email:this.task.email,
-         hash:bcrypt.hashSync(this.password,10),
+         hash:bcrypt.hashSync(this.password,10)
          
         });console.warn(users);
-        if(users.status==201)
-        {
-            localStorage.setItem("user-info",JSON.stringify(users.data))
-            this.$router.push({name:'login'})
-        }}
-    }}
+    //     if(users.status==201)
+    //     {
+    //         localStorage.setItem("user-info",JSON.stringify(users.data))
+    //         this.$router.push({name:'login'})
+    //     }}
+     }}
         // mounted(){
         //     let user = localStorage.getItem('user-info');
         //     if(user)
@@ -103,5 +103,5 @@ export default{
     //     this.getEncryptedData();
     //   }
     // },
-}
+}}
 </script>

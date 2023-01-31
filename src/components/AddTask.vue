@@ -1,52 +1,72 @@
 <template>
   <div>
-    <router-link to="/" tag="button" class="btn btn-warning">home</router-link>
-    
-    <input type="text" :value="msg" @input="changeMessage" />
-    <button v-on:click="addTask">ADDTask</button>
-    <div>Selected: {{ task.priority }}</div>
+    <!-- <router-link to="/" tag="button" class="btn btn-warning">home</router-link> -->
 
-    <select :value="msg" @input="changeMessage">
+    <input type="text" v-model="taskss.taskname" />
+    <button v-on:click="change">ADDTask</button>
+    <div>Selected: {{}}</div>
+
+    <select v-model="taskss.priority">
       <option disabled value="">Please select one</option>
-      <option>Low</option>
-      <option>Medium</option>
-      <option>High</option>
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
     </select>
   </div>
 
 </template>
 <script>
-import axios from 'axios'
+//import axios from 'axios'
 
 export default {
-  //props:['msg'],
+  props: ['task'],
   data() {
     return {
-    //mutate:this.task,
-   task: [],
-   // mutableList: this.task,
-   message:''
-    
-     
+      taskss: {
+        priority: '',
+        //mutate:this.task,
+        //task: [],
+        // mutableList: this.task,
+        taskname: ''
+
+      }
+
     }
   },
   methods: {
-    async addTask() {
-      const res = await axios.post(`http://localhost:3000/task`, {
-        taskname: this.task.taskname,
-        priority: this.task.priority,
-        checked: false,
-        
-       // done: false
-      });
-      this.task = [this.task, res.data];
-      this.taskname = "",
-        this.priority = ""
-         },
-   
-     
-    }
-    
+    change() {
+      this.$emit("changename", this.taskss)
+      // console.warn(this.taskname)
+      //  this.$emit("prio",this.priority)
+      // console.warn(this.priority)
+    },
+    // addname(){
+    //   this.$emit("changename",this.taskname)
+    // }
+    //  priority(){
+    //   this.$emit("prio",this.priority)
+    //   console.warn(this.priority)
+    //  }
+
+  }
+  // async addTask() { 
+  //   this.$emit('prioselect',this.priority),
+  //   this.$emit('taskname',this.taskname)
+  //   const res = await axios.post(`http://localhost:3000/task`, {
+  //     taskname: this.taskname,
+  //     priority: this.priority,
+  //     checked: false,
+
+  //    // done: false
+  //   });
+  //   this.task = [this.task, res.data];
+  //   this.taskname = "",
+  //     this.priority = ""
+  //  }
+
+
+}
+
 
     // post:function(){
     //     this.$http.post('http://localhost:3000/task',{
@@ -56,7 +76,7 @@ export default {
 
     //     })
     // }
-  }
+
 
 
 </script>

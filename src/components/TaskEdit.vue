@@ -4,9 +4,8 @@
     <router-link to="/" tag="button" class="btn btn-warning">home</router-link>
     <input type="text" class="form-control" v-model="task.taskname" />
     <button v-on:click="editTask">Edit Task</button>
-
+         
     <div>Selected:{{ task.priority }}</div>
-
     <!-- <select class="form-select" :value="value" @input="$emit('input', $event.target.value)" > -->
     <select class="form-select" v-model="task.priority">
       <option class="badge bg-success">Low</option>

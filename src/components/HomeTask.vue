@@ -1,14 +1,20 @@
 <template>
-  
+
   <div>
+    <SingluarModal v-if="displayModal"
+            :visible="true"
+            variant="success"
+            @close-modal-event="hideModal" :editododatalist="editododata"></SingluarModal>
+    <!-- <button class="btn btn-info" @click="showModal">show modal</button> -->
+    <add-task v-bind:task="task" v-on:changename="updateSite($event)"></add-task>
     <header>
       <h1><i class="fas fa-tasks me-2"></i>TO DO LIST</h1>
       <hr>
     </header>
-    
+    <button></button>
     <!-- <button class="btn btn-danger" v-on:click="">ADD TASK</button>
 <router-link></router-link> -->
-    <router-link to="/Add" tag="button" class="btn btn-primary">Add Task</router-link>
+    <!-- <router-link to="/Add" tag="button" class="btn btn-primary">Add Task</router-link> -->
     <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
       <!-- <div v-for="task in tasks" class="show"> -->
       <table class="table mb-0">
@@ -33,29 +39,29 @@
               <div>
                 <!-- <input type="checkbox"    />
                            <label for="checkbox">{{ task.status}}</label> -->
-                <input type="checkbox"  v-model="task.checked"
-                  v-on:click="checkTask(task)" />
+                <input type="checkbox" v-model="task.checked" v-on:click="checkTask(task)" />
                 <label for="checkbox">{{ task.checked ? 'done' : 'undone' }}</label>
-
 
               </div>
               <h6 class="mb-0"><span class="badge bg-danger"></span></h6>
             </td>
             <td class="align-middle">
               <!-- <button>edit</button> -->
-              <router-link v-bind:to="'/edit/' + task.id" tag="button"
-                class="btn btn-warning rounded-2">edit</router-link>
+              <button  class="btn btn-warning rounded-2" @click="showModal(task)">edit</button>
+              <!-- <router-link v-bind:to="'/edit/' + task.id" tag="button"
+                class="btn btn-warning rounded-2">edit</router-link> -->
               <button v-on:click="removeItem(task.id)" class="btn btn-warning rounded-2">delete</button>
-
+              
+            
+            
               <!-- <font-awesome-icon icon="fa-solid fa-trash" /> -->
-
-
             </td>
 
           </tr>
 
         </tbody>
       </table>
+
     </div>
 
   </div>
@@ -64,19 +70,28 @@
 
 <script>
 import axios from 'axios'
-
-
+//import AddTask from './AddTask.vue';
+import Addtask from './AddTask.vue';
+import SingluarModal from './SingluarModal.vue';
 export default {
-  // props: {
-  //     msg: {
-  //         type: Array
-  //     }
-  // },
+  components: {
+    //  AddTask
+   
+    SingluarModal,
+    'add-task': Addtask,
+  },
+  props: {
+    task: {
+      type: Array
+    }
+  },
   data() {
     return {
       tasks: [],
-     task: [],
+      editododata:[],
+      //task: [],
       // isclicked:false
+      displayModal: false,
      
     };
   },
@@ -90,6 +105,15 @@ export default {
     }
   },
   methods: {
+    showModal(task) {
+      // alert();
+      this.editododata = task;
+      this.displayModal = true;
+    },
+    hideModal() {
+      this.displayModal = false;
+    },
+    
     removeItem(id) {
       axios.delete(`http://localhost:3000/task/${id}`);
       this.tasks = this.tasks.filter((task) => task.id !== id);
@@ -125,9 +149,40 @@ export default {
 
       }
 
+    },
+
+    async updateSite(para) {
+      // console.log(para.taskname)
+      this.tasks.push(para)
+
+      const res = await axios.post(`http://localhost:3000/task`, {
+        taskname: para.taskname,
+        priority: para.priority,
+        checked: false,
+
+        // done: false
+      });
+      console.log(res)
+      this.taskname = "",
+        this.priority = ""
     }
+
+
+    // const res = await axios.post(`http://localhost:3000/task`, {
+    // taskname: this.event,
+    // priority: this.event,
+    // checked: false,
+
+    // // done: false
+    // });
+    // this.task = [this.task, res.data];
+    // this.taskname = "",
+    // this.priority = ""
+    // }
+
   }
 }
+
 </script>
 <style>
 *,

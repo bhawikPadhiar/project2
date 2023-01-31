@@ -2,12 +2,12 @@
   <div id="app">
     
     <!-- <home-page v-bind:task="task"></home-page> -->
-    <!-- <home-page v-bind:msg="task"></home-page> -->
+    <home-page v-bind:task="task" ></home-page>
     <!-- <router-view></router-view> -->
-<SignUp></SignUp>
-<LoginPage></LoginPage>
+<!-- <SignUp></SignUp>
+<LoginPage></LoginPage> -->
 
-    <!-- <add-task v-bind:msg="task" @messageChanged="message = $event"></add-task> -->
+    <!-- <add-task v-bind:task="task" v-on:changename="updateSite($event)"></add-task> -->
     <!-- <task-edit v-bind:task="task"></task-edit> -->
     <!-- <Addtask v-bind:task="task"></Addtask> -->
   
@@ -15,11 +15,12 @@
 </template>
 
 <script>
-import SignUp from './components/SignUp.vue';
-import LoginPage from './components/LoginPage.vue';
-
-// import Homepage from './components/HomeTask.vue'
-// import Addtask from './components/AddTask.vue';
+// import SignUp from './components/SignUp.vue';
+// import LoginPage from './components/LoginPage.vue';
+//import axios from 'axios';
+//import SingluarModal from './components/SingluarModal.vue';
+import Homepage from './components/HomeTask.vue'
+//import Addtask from './components/AddTask.vue';
 //import TaskEdit from './components/Task-Edit.vue';
 export default {
   // name: 'App',
@@ -29,24 +30,29 @@ export default {
   //     }
   // },
   components: {
-    SignUp,
-    LoginPage,
-
-    // 'home-page':Homepage,
-    // 'add-task':Addtask,
+    // SignUp,
+    // LoginPage,
+//SingluarModal,
+    'home-page':Homepage,
+   //'add-task':Addtask,
    // 'task-edit':TaskEdit
 
   },
   data() {
     return {
       task: [],
-  
+    visible:false
 
     }
   },
+  methods:{ 
+  
+  }
 
 
 }
+
+
 </script>
 
 <style>
